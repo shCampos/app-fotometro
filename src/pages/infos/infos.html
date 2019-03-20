@@ -1,0 +1,59 @@
+<ion-header>
+	<ion-navbar>
+<!-- 		<ion-buttons start>
+			<button ion-button icon-only (click)="sair()">
+				  <ion-icon name="arrow-round-back"></ion-icon>
+			</button>
+		</ion-buttons> -->
+		<ion-title>
+			Medida - {{medida.data}}
+		</ion-title>
+		<ion-buttons end>
+			<button ion-button icon-only (click)="saveAsCsv()">
+				<ion-icon name="md-download"></ion-icon>
+			</button>
+			<button ion-button icon-only (click)="excluirMeds(medida.key)">
+				<ion-icon name="ios-trash"></ion-icon>
+			</button>
+			<button ion-button icon-only (click)="edit()">
+				<ion-icon name="options"></ion-icon>
+			</button>
+
+		</ion-buttons>
+	</ion-navbar>
+</ion-header>
+
+<ion-content padding>
+	<ion-card>
+		<form #medForm="ngForm" (ngSubmit)="atualizarMed(medForm)">
+			<ion-list>
+				<ion-item>
+					<ion-label color="primary" style="margin-left: 10px; display: block;">Data</ion-label>
+					<ion-input  *ngIf="flagInput" [(ngModel)]="medForm.data" name="data" type="text" placeholder="{{medida.data}}"></ion-input>
+					<ion-label *ngIf="!flagInput" style="float: right !important; color: black !important;">{{medida.data}}</ion-label>
+				</ion-item>
+				<ion-item>
+					<ion-label color="primary" style="margin-left: 10px">Concentração</ion-label>
+					<ion-input  *ngIf="flagInput" [(ngModel)]="medForm.conc" name="conc" type="text" placeholder="{{medida.conc}}"></ion-input>
+					<ion-label *ngIf="!flagInput" style="float: right !important; color: black !important;">{{medida.conc}} Mol/L</ion-label>
+				</ion-item>
+				<ion-item>
+					<ion-label color="primary" style="margin-left: 10px">Soluto</ion-label>
+					<ion-input  *ngIf="flagInput" [(ngModel)]="medForm.soluto" name="soluto" type="text" placeholder="{{medida.soluto}}"></ion-input>
+					<ion-label *ngIf="!flagInput" style="float: right !important; color: black !important;">{{medida.soluto}}</ion-label>
+				</ion-item>
+				<ion-item>
+					<ion-label color="primary" style="margin-left: 10px">Solvente</ion-label>
+					<ion-input  *ngIf="flagInput" [(ngModel)]="medForm.solvente" name="solvente" type="text" placeholder="{{medida.solvente}}"></ion-input>
+					<ion-label *ngIf="!flagInput" style="float: right !important; color: black !important;">{{medida.solvente}}</ion-label>
+				</ion-item>
+				<ion-item>
+					<button ion-button full type="submit" *ngIf="flagInput">Atualizar</button>
+				</ion-item>
+			</ion-list>
+		</form>
+	</ion-card>
+	<ion-card>
+		<div id="chartContainer" style="width: 300px; height: 300px;"></div>
+	</ion-card>
+</ion-content>

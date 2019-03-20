@@ -1,0 +1,78 @@
+page-home {
+
+}
+.scroll-content{
+	padding-bottom: 0px !important;
+	padding-top: 0px !important;
+	margin-top: 55px !important;
+}
+div #header{
+	margin-top: 0px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+.item-md{
+	padding-left: 0 !important;
+}
+.item-inner{
+	padding-right: 0 !important;
+}
+
+.profile-item {
+	text-align: center;
+	margin-top: 0px;
+	padding-top: 0px;
+}
+.profile-picture {
+	border: 1px solid rgba(0, 0, 0, 0.25);
+	padding: 3px;
+	border-radius: 100%;
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	margin: 0 auto;
+	width: 90px;
+	height: 90px;
+	overflow: hidden;
+}
+.profile-picture img {
+	width: 90px;
+	border-radius: 100%;
+}
+.profile-name {
+	padding-top: 5px;
+	font-size: x-large !important;
+	font-weight: bold !important;
+	text-transform: capitalize;
+}
+
+.table ion-col{
+	background: white;
+	border: 0.2px solid #B4B4B4;
+	text-align: center;	
+	font-size: 10pt;
+}
+
+#hed ion-col{
+	background: #B4B4B4;
+}
+
+#dados ion-col{
+	display: flex !important;
+	justify-content: center !important;
+	align-items: center !important;
+}
+
+ion-slides{
+	height: 45vh;
+}
+.slide-zoom{
+	height: 100%;
+	padding: 10px 0px;
+}
+.slide-zoom #h2{
+	font-family: 'Comfortaa', cursive;
+	text-transform: uppercase;
+	font-size: 14pt;
+	text-align: left;
+}

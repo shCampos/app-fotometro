@@ -1,0 +1,162 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nome do app</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="logoff()">
+        <ion-icon name="power"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <div padding id="header">
+    <ion-segment [(ngModel)]="action">
+      <ion-segment-button value="perfil">
+        Perfil
+      </ion-segment-button>
+      <ion-segment-button value="blue">
+        Conexao
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <div [ngSwitch]="action">
+    <ion-list *ngSwitchCase="'perfil'">
+      <ion-item class="profile-item">
+        <div class="profile-picture big-profile-picture">
+          <img src="../assets/imgs/tumbi.jpg">
+          <!-- <img src="../assets/imgs/logo.png"> -->
+        </div>
+        <h2 class="profile-name dark"><ion-spinner *ngIf="!nome"></ion-spinner>{{nome}}</h2>
+        <p>ID do usuário - {{id}}</p>
+      </ion-item>
+ 
+      <ion-item>
+<!--        <ion-card>
+          <ion-card-header>
+            <h2 id="h2" *ngFor="let p of proj_esc | async">
+              <ion-spinner *ngIf="!projetos"></ion-spinner>
+              <div *ngIf="flagNome">{{p.nome}} </div>
+              
+            </h2>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-row id="dados" *ngFor="let m of medidas | async; let i = index">
+              <ion-col>
+                {{i+1}}
+              </ion-col>
+              <ion-col>
+                {{m.data}}
+              </ion-col>
+              <ion-col>
+                <button ion-button icon-only clear (click)="abrirInfo(m)">
+                  <ion-icon name="apps"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+            <ion-row *ngIf="flagVazio">
+              <ion-col>
+                <ion-icon name="folder-open" style="font-size: 30pt;"></ion-icon> <br>
+                Não tem medidas.
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+        <ion-row>
+          <ion-col width-50>
+            <button ion-button outline (click)="anterior(proj_esc.key)">
+              <ion-icon name="ios-game-controller-a-outline"></ion-icon>
+                Anterior
+            </button>
+          </ion-col>
+          <ion-col width-50>
+            <button ion-button outline (click)="proximo(proj_esc.key)">
+              <ion-icon name="refresh"></ion-icon>
+                Proximo
+            </button>
+          </ion-col>
+        </ion-row> -->
+        <ion-slides pager #slider (ionSlideDidChange)="mudouSlide($event)">
+          <ion-slide *ngFor="let p of projetos | async;">
+              <h2 id="h2">
+              <ion-spinner *ngIf="!projetos"></ion-spinner>{{p.nome}} 
+              <ion-icon name="ios-settings" (click)="alertaProj(p)"></ion-icon>
+              <ion-icon name="ios-trash" (click)="alertaExcProj(p.key, p.id_proj, p.nome)"></ion-icon>
+              <ion-icon name="ios-add" (click)="alertaNovoProj()" style="float: right;"></ion-icon>
+            </h2>
+            <p style="float: left;">ID do projeto - {{p.id_proj}}</p>
+            <ion-grid class="table">
+              <ion-row id="hed">
+                <ion-col col-4>
+                  Número
+                </ion-col>
+                <ion-col col-4>
+                  Data
+                </ion-col>
+                <ion-col col-4></ion-col>
+              </ion-row>
+
+              <ion-row id="dados" *ngFor="let m of medidas | async; let i = index">
+                <ion-col>
+                  {{i+1}}
+                </ion-col>
+                <ion-col>
+                  {{m.data}}
+                </ion-col>
+                <ion-col>
+                  <button ion-button icon-only clear (click)="abrirInfo(m)">
+                    <ion-icon name="apps"></ion-icon>
+                  </button>
+                </ion-col>
+              </ion-row>
+              <ion-row *ngIf="flagVazio">
+                <ion-col>
+                  <ion-icon name="folder-open" style="font-size: 30pt;"></ion-icon> <br>
+                  Não tem medidas.
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-slide>
+        </ion-slides>
+      </ion-item>
+    </ion-list>
+
+    <ion-list *ngSwitchCase="'blue'">
+      <ion-grid>
+        <ion-row>
+          <ion-col width-50>
+            <!-- <button ion-button outline (click)="irControl()" *ngIf="!flagDisp" disabled style="float: right;">
+              <ion-icon name="ios-game-controller-a-outline" style="margin-right: 10px"></ion-icon>
+              Dispositivo
+            </button> -->
+            <button ion-button outline (click)="irControl()" *ngIf="!flagDisp" style="float: right;">
+              <ion-icon name="ios-game-controller-a-outline" style="margin-right: 10px"></ion-icon>
+              Dispositivo
+            </button>
+          </ion-col>
+          <ion-col width-50>
+            <button ion-button outline (click)="listPairedDevices()" style="float: left;">
+              <ion-icon name="refresh" style="margin-right: 10px"></ion-icon>
+              Procurar
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-list radio-group [(ngModel)]="pairedDeviceID" *ngIf="listToggle">
+            <ion-item *ngFor="let i of pairedList; let j=index">
+              <ion-label>{{i.name}}</ion-label>
+              <ion-radio value="{{j}}" checked="false"></ion-radio>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <button ion-button full class="submit-button" *ngIf="listToggle" (click)="selectDevice()">
+        <ion-icon name="bluetooth"></ion-icon>Conectar
+      </button>
+    </ion-list>
+  </div>
+</ion-content>
