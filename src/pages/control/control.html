@@ -16,20 +16,20 @@
 			<ion-icon name="ios-checkmark" item-end *ngIf="flagProp"></ion-icon>
 		</button>
 
-		<button ion-item (click)="receber()" *ngIf="!flagProp" disabled="true">
+		<button ion-item (click)="receber(0)" *ngIf="!flagProp" disabled="true">
 			Analisar padrão
 			<ion-icon name="ios-checkmark" item-end *ngIf="flagI0"></ion-icon>
 		</button> 
-		<button ion-item (click)="receber()" *ngIf="flagProp">
+		<button ion-item (click)="receber(0)" *ngIf="flagProp">
 			Analisar padrão
 			<ion-icon name="ios-checkmark" item-end *ngIf="flagI0"></ion-icon>
 		</button>
 
-		<button ion-item (click)="receber()" *ngIf="!flagI0" disabled="true">
+		<button ion-item (click)="receber(1)" *ngIf="!flagI0" disabled="true">
 			Analisar a amostra
 			<ion-icon name="ios-checkmark" item-end *ngIf="flagI"></ion-icon>
 		</button>
-		<button ion-item (click)="receber()" *ngIf="flagI0">
+		<button ion-item (click)="receber(1)" *ngIf="flagI0">
 			Analisar a amostra
 			<ion-icon name="ios-checkmark" item-end *ngIf="flagI"></ion-icon>
 		</button>

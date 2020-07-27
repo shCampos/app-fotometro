@@ -95,6 +95,10 @@
     <allow-navigation href="http://192.168.0.105:8100" />
     <plugin name="cordova-plugin-file" spec="6.0.1" />
     <allow-navigation href="http://169.254.134.61:8100" />
-    <engine name="android" spec="^7.1.4" />
     <allow-navigation href="http://10.4.24.97:8100" />
+    <plugin name="cordova-android-support-gradle-release" spec="^2.0.1">
+        <variable name="ANDROID_SUPPORT_VERSION" value="27.+" />
+    </plugin>
+    <allow-navigation href="http://192.168.1.5:8100" />
+    <engine name="android" spec="^7.1.4" />
 </widget>

@@ -23,7 +23,7 @@ export class InfosPage {
 		this.tudo = [];
 		this.medida = this.navParams.get('medida');
 		this.email = this.navParams.get('email');
-		//console.log(this.medida);
+		console.log(this.medida);
 	}
 
 	ionViewDidEnter(){
@@ -68,7 +68,7 @@ export class InfosPage {
 		console.log(m.lambda, m.ab);
 		let dataPoints = [];	
 		for(var i = 0; i < m.lambda.length; i++ ){		  	
-			dataPoints.push({ x: Number(m.lambda[i]),y: Number(m.ab[i])});
+			dataPoints.push({ x: Number(m.lambda[i]), y: Number(m.ab[i])});
 		}
 		var filename = "idMed"+m.id+"idProj"+m.idProj+"dataMed"+m.data
 		this.chart(dataPoints, filename);
@@ -161,16 +161,12 @@ export class InfosPage {
 		alert.present();	
 	}
 
-	juntaTudo(){
-		
-		
-	}
-
 	saveAsCsv(){
 		this.presentLoading('Salvando...');
-		for (var i = 0; i < this.medida.van.length; i++) {
+		for (var i = 0; i < this.medida.van0.length; i++) {
 			this.tudo.push({
-				"van": this.medida.van[i],
+				"van0": this.medida.van0[i],
+				"van1": this.medida.van1[i],
 				"i0": this.medida.i0[i],
 				"i1": this.medida.i1[i],
 				"ab": this.medida.ab[i],
@@ -179,7 +175,7 @@ export class InfosPage {
 			});
 		}
 		console.log(this.tudo);
-		this.JSONToCSVConvertor(this.tudo, 'Valor analógico - i0 - i1 - ab - tr - lambda', '');   
+		this.JSONToCSVConvertor(this.tudo, 'vAn0 - vAn1 - i0 - i1 - ab - tr - lambda', '');   
 	}
 
 	JSONToCSVConvertor(JSONData, ReportTitle, ShowLabel) {
@@ -253,7 +249,7 @@ export class InfosPage {
 
 	enviarEmail(filePath){
 		this.presentLoading('Enviando...');
-
+		
 		let email = {
 		  to: this.email,
 		  cc: 'rogers.oliveira@ifms.edu.br',
@@ -276,6 +272,6 @@ export class InfosPage {
 	}
 
 	sair(){
-		this.navCtrl.pop();
+		this.navCtrl.push(HomePage);
 	}
 }

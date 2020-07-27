@@ -1,13 +1,7 @@
 <ion-content padding>
 	<ion-card>
 		<ion-card-content>
-			<ion-note *ngIf="flagSenha" color="danger">Senha inválida</ion-note>
-			<ion-note *ngIf="flagUser" color="danger">E-mail inválido</ion-note>
-			<ion-note *ngIf="flagOutro" color="danger">Erro desconhecido</ion-note>
-			<ion-note *ngIf="flagNet" color="danger">Sem conexão</ion-note>
-			<ion-note *ngIf="flagKey" color="danger">Key inválida</ion-note>
-			<ion-note *ngIf="flagVazio" color="danger">Digite os valores</ion-note>
-			<ion-note *ngIf="flagFoi" color="danger">Cadastrado</ion-note>
+			<img src="../assets/imgs/ifms.jpg"/>
 			<form #formLogin="ngForm" (ngSubmit)="login(formLogin)">
 				<ion-item>
 				    <ion-input [(ngModel)]="formLogin.email" name="email" type="email" placeholder="E-mail" required="true"></ion-input>
@@ -22,6 +16,14 @@
 					<button ion-button outline type="submit" block medium *ngIf="formLogin.email">Login</button>
 				</ion-item>
 			</form>
+			
+			<ion-note *ngIf="flagSenha" color="danger">Senha inválida</ion-note>
+			<ion-note *ngIf="flagUser" color="danger">E-mail inválido</ion-note>
+			<ion-note *ngIf="flagOutro" color="danger">Erro desconhecido</ion-note>
+			<ion-note *ngIf="flagNet" color="danger">Sem conexão</ion-note>
+			<ion-note *ngIf="flagKey" color="danger">Key inválida</ion-note>
+			<ion-note *ngIf="flagVazio" color="danger">Digite os valores</ion-note>
+			<ion-note *ngIf="flagFoi" color="danger">Cadastrado</ion-note>
 		</ion-card-content>
 	</ion-card>
 </ion-content>

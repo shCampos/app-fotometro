@@ -1,6 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Nome do app</ion-title>
+    <ion-title>
+      LabQui - IFMS
+    </ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="logoff()">
         <ion-icon name="power"></ion-icon>
@@ -25,10 +27,10 @@
     <ion-list *ngSwitchCase="'perfil'">
       <ion-item class="profile-item">
         <div class="profile-picture big-profile-picture">
-          <img src="../assets/imgs/tumbi.jpg">
+          <img src="../assets/imgs/logo.png">
           <!-- <img src="../assets/imgs/logo.png"> -->
         </div>
-        <h2 class="profile-name dark"><ion-spinner *ngIf="!nome"></ion-spinner>{{nome}}</h2>
+        <h2 class="profile-name dark"><ion-spinner *ngIf="!nome"></ion-spinner>Usuário</h2>
         <p>ID do usuário - {{id}}</p>
       </ion-item>
  
@@ -78,8 +80,8 @@
             </button>
           </ion-col>
         </ion-row> -->
-        <ion-slides pager #slider (ionSlideDidChange)="mudouSlide($event)">
-          <ion-slide *ngFor="let p of projetos | async;">
+        <ion-slides pager #slider (ionSlideDidChange)="mudouSlide($event)" color="secondary">
+          <ion-slide *ngFor="let p of projetos | async;" color="secondary">
               <h2 id="h2">
               <ion-spinner *ngIf="!projetos"></ion-spinner>{{p.nome}} 
               <ion-icon name="ios-settings" (click)="alertaProj(p)"></ion-icon>
@@ -90,10 +92,10 @@
             <ion-grid class="table">
               <ion-row id="hed">
                 <ion-col col-4>
-                  Número
+                  #
                 </ion-col>
                 <ion-col col-4>
-                  Data
+                  ID
                 </ion-col>
                 <ion-col col-4></ion-col>
               </ion-row>
@@ -103,7 +105,7 @@
                   {{i+1}}
                 </ion-col>
                 <ion-col>
-                  {{m.data}}
+                  {{m.identificador}}
                 </ion-col>
                 <ion-col>
                   <button ion-button icon-only clear (click)="abrirInfo(m)">
@@ -127,11 +129,11 @@
       <ion-grid>
         <ion-row>
           <ion-col width-50>
-            <!-- <button ion-button outline (click)="irControl()" *ngIf="!flagDisp" disabled style="float: right;">
+            <button ion-button outline (click)="irControl()" *ngIf="!flagDisp" disabled style="float: right;">
               <ion-icon name="ios-game-controller-a-outline" style="margin-right: 10px"></ion-icon>
               Dispositivo
-            </button> -->
-            <button ion-button outline (click)="irControl()" *ngIf="!flagDisp" style="float: right;">
+            </button>
+            <button ion-button outline (click)="irControl()" *ngIf="flagDisp" style="float: right;">
               <ion-icon name="ios-game-controller-a-outline" style="margin-right: 10px"></ion-icon>
               Dispositivo
             </button>
